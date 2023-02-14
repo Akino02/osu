@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./res/css/style.css" />
+  </head>
+  <body>
+    <div id="menu">
+      <!--tady budou všechny menu věci jako start atd-->
+      <div id="startbutt">Start</div>
+      <input
+        id="musicvol"
+        type="number"
+        placeholder="1-10"
+        min="1"
+        max="10"
+      />
+      <button id="musicgood">Press</button>
+      <div id="container_game">
+        <!--tady bude canvas a v tom osu
+        <canvas id="canvas"></canvas>-->
+        <div id="scorehit">100</div>
+        <div id="taker"></div>
+        <audio id="music" src="./res/audio/gutmusic.mp3"></audio>
+      </div>
+      <!--Indikátor hp-->
+      <div id="hpbar"><div id="hp"></div></div>
+    </div>
+
+    <script src="./res/js/main.js"></script>
+  </body>
+</html>
