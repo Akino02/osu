@@ -47,7 +47,7 @@ function scoreanime() {
   scorehit.style.transition = "0.1s";
 }
 //funkce pro životy když neklikne na nic tak je konec hry
-function hpfunction() { //spamuje se tam tahle funkce a je to rychlejší když hraje znovu
+function hpfunction() {
   if (endspam == 0){
     setInterval(() => {
       if (hpbar > 0) {
@@ -98,5 +98,10 @@ taker.onclick = () => {
   randomnumber();
   taker.style.top = `${y}px`;
   taker.style.left = `${x}px`;
-  hpbar += 60;
+  if(hpbar < 340){
+    hpbar += 60;
+  }
+  else{
+    hpbar += 0;
+  }
 };
