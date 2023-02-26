@@ -11,23 +11,23 @@
     <div id="menu">
       <!--tady budou všechny menu věci jako start atd-->
       <div id="startbutt">Start</div>
-      <input
-        id="musicvol"
-        type="number"
-        placeholder="1-10"
-        min="1"
-        max="10"
-      />
+      <div class="signVol">Volume</div>
+      <input id="musicvol" type="number" placeholder="1-10" min="1" max="10" />
       <button id="musicgood">Press</button>
+    </div>
       <div id="container_game">
-        <!--tady bude canvas a v tom osu
-        <canvas id="canvas"></canvas>-->
+        <!--Hra je umíštěna tady-->
         <div id="scorehit">100</div>
         <div id="taker"></div>
         <audio id="music" src="./res/audio/gutmusic.mp3"></audio>
-      </div>
       <!--Indikátor hp-->
       <div id="hpbar"><div id="hp"></div></div>
+  </div>
+    <div id="result">
+      <div id="shutres">x</div>
+      <div id="score"></div>
+      <div id="greathit"></div>
+      <div id="misclick"></div>
     </div>
 
     <script src="./res/js/main.js"></script>
