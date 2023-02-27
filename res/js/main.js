@@ -8,6 +8,8 @@ const musicvol = document.getElementById("musicvol");
 const musicgood = document.getElementById("musicgood");
 const hpball = document.getElementById("hp");
 const hpbarview = document.getElementById("hpbar");
+//const progresbar = document.getElementById("progresbar");
+const prog = document.getElementById("prog");
 const resulttab = document.getElementById("result");
 const shutres = document.getElementById("shutres");
 const score = document.getElementById("score");
@@ -16,7 +18,9 @@ const misclick = document.getElementById("misclick");
 
 //ZKUSIT TO UDĚLAT NA JAKOUKOLIV HUDBU CO JSI ČLOVĚK ZVOLÍ !!!!!
 //Udělat na jiné obtížnosti
-//udělat timer hudby    /priorita !!!! (harore)
+
+//HOTOVÉ
+//udělat timer hudby    /priorita !!!! (naharore)
 //udělat aby mohl missnout click     / v podstate je ale moc nejde
 //na konci udělat tabulku kolikrát kliknul a kolikrát missnul
 
@@ -28,6 +32,7 @@ let countclick = 0;
 let misclicks = 0;
 let hpbar = 390;
 let scorenum = 0;
+let progbar = 0;
 
 //kontrola výšky a šířky zda to sedí zda ne tak tam bude upozornění, že to nefituje
 /*window.addEventListener("resize", function() {
@@ -58,6 +63,7 @@ function musicplay_hpfunction() {
   setInterval(() => {
     if (music.currentTime >= 218 || hpbar <= 20) {
       music.pause();
+      progbar = 0;
       menu.style.display = "flex";
       game.style.display = "none";
       resulttab.style.display = "block";
@@ -71,9 +77,17 @@ function musicplay_hpfunction() {
         hpball.style.left = `${hpbar}px`;
       } else if (hpbar <= 20) {
         music.pause();
+        progbar = 0;
       }
     }, 20);
   }
+}
+//funkce která ukazuje délku songu
+function musicprogbar() {
+  setInterval(() => {
+    progbar = music.currentTime;
+    prog.style.left = `${((progbar)/2)*10}px`;
+  }, 50)
 }
 function resultwrite() {
     score.innerHTML = `Score: ${scorenum}`;
@@ -101,6 +115,7 @@ musicgood.onclick = () => {
 };
 start.onclick = () => {
   randomnumber();
+  progbar = 0;
   hpbar = 390;
   music.currentTime = 0;
   hpball.style.left = `${hpbar}px`;
@@ -116,6 +131,7 @@ start.onclick = () => {
   misclicks = 0;
   countclick = 0;
   resultwrite();
+  musicprogbar();
 };
 game.onclick = () => {
   randomnumber();

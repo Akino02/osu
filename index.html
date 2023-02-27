@@ -4,8 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Wish Osu</title>
     <link rel="stylesheet" href="./res/css/style.css" />
+    <link
+      rel="shortcut icon"
+      href="./res/img/favicon-32x32.png"
+      type="image/x-icon"
+    />
   </head>
   <body>
     <div id="menu">
@@ -15,14 +20,15 @@
       <input id="musicvol" type="number" placeholder="1-10" min="1" max="10" />
       <button id="musicgood">Press</button>
     </div>
-      <div id="container_game">
-        <!--Hra je umíštěna tady-->
-        <div id="scorehit">100</div>
-        <div id="taker"></div>
-        <audio id="music" src="./res/audio/gutmusic.mp3"></audio>
+    <div id="container_game">
+      <!--Hra je umíštěna tady-->
+      <div id="progresbar"><div id="prog"></div></div>
+      <div id="scorehit">100</div>
+      <div id="taker"></div>
+      <audio id="music" src="./res/audio/gutmusic.mp3"></audio>
       <!--Indikátor hp-->
       <div id="hpbar"><div id="hp"></div></div>
-  </div>
+    </div>
     <div id="result">
       <div id="shutres">x</div>
       <div id="score"></div>
