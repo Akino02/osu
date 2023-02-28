@@ -33,6 +33,9 @@ let misclicks = 0;
 let hpbar = 390;
 let scorenum = 0;
 let progbar = 0;
+let sx1 = screen.width - screen.width * 0.2;
+let sy1 = screen.width - screen.width * 0.7;
+let sxy = screen.height - screen.height * 0.9;
 
 //kontrola výšky a šířky zda to sedí zda ne tak tam bude upozornění, že to nefituje
 /*window.addEventListener("resize", function() {
@@ -53,8 +56,15 @@ window.addEventListener("resize", function() {
 //randomnumber pro kruh pozice
 function randomnumber() {
   setInterval(() => {
-    x = Math.floor(Math.random() * 1400 + 100);
-    y = Math.floor(Math.random() * 700 + 100);
+    x = Math.floor(Math.random() * sx1 + sxy);
+    y = Math.floor(Math.random() * sy1 + sxy);
+  }, 1);
+}
+function tryrespon() {
+  setInterval(() => {
+    sx1 = screen.width - screen.width * 0.2;
+    sy1 = screen.width - screen.width * 0.7;
+    sxy = screen.height - screen.height * 0.9;
   }, 1);
 }
 //funkce když se dohraje hra tak se vypne hudba a jde to do menu
@@ -86,16 +96,17 @@ function musicplay_hpfunction() {
 function musicprogbar() {
   setInterval(() => {
     progbar = music.currentTime;
-    prog.style.left = `${((progbar)/2)*10}px`;
-  }, 50)
+    prog.style.left = `${(progbar / 2) * 10}px`;
+  }, 50);
 }
 function resultwrite() {
-    score.innerHTML = `Score: ${scorenum}`;
-    greathit.innerHTML = `Hits: ${countclick}`;
-    misclick.innerHTML = `Misclicks: ${misclicks - countclick}`;
+  score.innerHTML = `Score: ${scorenum}`;
+  greathit.innerHTML = `Hits: ${countclick}`;
+  misclick.innerHTML = `Misclicks: ${misclicks - countclick}`;
 }
 window.onload = () => {
   randomnumber();
+  tryrespon();
   taker.style.top = `${y}px`;
   taker.style.left = `${x}px`;
 };
@@ -155,7 +166,7 @@ taker.onclick = () => {
   randomnumber();
   taker.style.top = `${y}px`;
   taker.style.left = `${x}px`;
-  scorenum += (countclick*100);
+  scorenum += countclick * 100;
   resultwrite();
 };
 shutres.onclick = () => {
