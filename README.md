@@ -1,6 +1,8 @@
 # Wish Osu
 [Play](https://akino02.github.io/osu/)
 #
+<h2>1.4</h1>
+<p>You can play on mobile</p>
 <h2>1.3</h1>
 <p>Music progress bar</p>
 <h2>1.2</h1>
