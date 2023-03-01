@@ -59,7 +59,7 @@ function musicplay_hpfunction() {
       resulttab.style.display = "block";
     }
   }, 10);
-  /*if (endspam == 0) {
+  if (endspam == 0) {
     setInterval(() => {
       if (hpbar > 20 && game.style.display == "block") {
         hpbar--;
@@ -70,7 +70,7 @@ function musicplay_hpfunction() {
         progbar,progbar1 = 0;
       }
     }, 20);
-  }*/
+  }
 }
 //funkce která ukazuje délku songu
 function musicprogbar() {
