@@ -8,8 +8,8 @@ const musicvol = document.getElementById("musicvol");
 const musicgood = document.getElementById("musicgood");
 const hpball = document.getElementById("hp");
 const hpbarview = document.getElementById("hpbar");
-//const progresbar = document.getElementById("progresbar");
 const prog = document.getElementById("prog");
+const prog1 = document.getElementById("prog1");
 const resulttab = document.getElementById("result");
 const shutres = document.getElementById("shutres");
 const score = document.getElementById("score");
@@ -18,11 +18,6 @@ const misclick = document.getElementById("misclick");
 
 //ZKUSIT TO UDĚLAT NA JAKOUKOLIV HUDBU CO JSI ČLOVĚK ZVOLÍ !!!!!
 //Udělat na jiné obtížnosti
-
-//HOTOVÉ
-//udělat timer hudby    /priorita !!!! (naharore)
-//udělat aby mohl missnout click     / v podstate je ale moc nejde
-//na konci udělat tabulku kolikrát kliknul a kolikrát missnul
 
 let x = 0;
 let y = 0;
@@ -33,38 +28,23 @@ let misclicks = 0;
 let hpbar = 390;
 let scorenum = 0;
 let progbar = 0;
+let progbar1 = 0;
 let sx1 = screen.width - screen.width * 0.2;
 let sy1 = screen.width - screen.width * 0.7;
-let sxy = screen.height - screen.height * 0.9;
-
-//kontrola výšky a šířky zda to sedí zda ne tak tam bude upozornění, že to nefituje
-/*window.addEventListener("resize", function() {
-  if (window.matchMedia("(min-width: 1400px)").matches && window.matchMedia("(min-width: 100px)").matches) {
-    console.log("Screen width is 1400px to 100px")
-  } else {
-    console.log("Screen doesn't fit with width")
-  }
-})
-window.addEventListener("resize", function() {
-  if (window.matchMedia("(min-height: 700px)").matches && window.matchMedia("(min-height: 100px)").matches) {
-    console.log("Screen height is 700px to 100px")
-  } else {
-    console.log("Screen doesn't fit with height")
-  }
-})*/
+let heightres = screen.height;
 
 //randomnumber pro kruh pozice
 function randomnumber() {
   setInterval(() => {
-    x = Math.floor(Math.random() * sx1 + sxy);
-    y = Math.floor(Math.random() * sy1 + sxy);
+    x = Math.floor(Math.random() * sx1 + 10);
+    y = Math.floor(Math.random() * sy1 + 10);
   }, 1);
 }
 function tryrespon() {
   setInterval(() => {
-    sx1 = screen.width - screen.width * 0.2;
-    sy1 = screen.width - screen.width * 0.7;
-    sxy = screen.height - screen.height * 0.9;
+    sx1 = screen.width - 120;
+    sy1 = screen.height - 120;
+    game.style.height = heightres;
   }, 1);
 }
 //funkce když se dohraje hra tak se vypne hudba a jde to do menu
@@ -73,13 +53,13 @@ function musicplay_hpfunction() {
   setInterval(() => {
     if (music.currentTime >= 218 || hpbar <= 20) {
       music.pause();
-      progbar = 0;
+      progbar,progbar1 = 0;
       menu.style.display = "flex";
       game.style.display = "none";
       resulttab.style.display = "block";
     }
   }, 10);
-  if (endspam == 0) {
+  /*if (endspam == 0) {
     setInterval(() => {
       if (hpbar > 20 && game.style.display == "block") {
         hpbar--;
@@ -87,10 +67,10 @@ function musicplay_hpfunction() {
         hpball.style.left = `${hpbar}px`;
       } else if (hpbar <= 20) {
         music.pause();
-        progbar = 0;
+        progbar,progbar1 = 0;
       }
     }, 20);
-  }
+  }*/
 }
 //funkce která ukazuje délku songu
 function musicprogbar() {
@@ -98,6 +78,10 @@ function musicprogbar() {
     progbar = music.currentTime;
     prog.style.left = `${(progbar / 2) * 10}px`;
   }, 50);
+  setInterval(() => {
+    progbar1 = music.currentTime;
+    prog1.style.left = `${progbar1}px`;
+  }, 50)
 }
 function resultwrite() {
   score.innerHTML = `Score: ${scorenum}`;
@@ -126,7 +110,7 @@ musicgood.onclick = () => {
 };
 start.onclick = () => {
   randomnumber();
-  progbar = 0;
+  progbar,progbar1,scorenum,misclicks,countclick = 0;
   hpbar = 390;
   music.currentTime = 0;
   hpball.style.left = `${hpbar}px`;
@@ -138,9 +122,6 @@ start.onclick = () => {
   menu.style.display = "none";
   game.style.display = "block";
   scorehit.style.display = "none";
-  scorenum = 0;
-  misclicks = 0;
-  countclick = 0;
   resultwrite();
   musicprogbar();
 };

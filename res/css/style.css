@@ -28,8 +28,8 @@
     cursor: pointer;
 }
 #container_game{
-    width: 75%;
-    height: 700px;
+    width: 100%;
+    min-height: 100vh;
     display: none;
 }
 #taker{
@@ -51,7 +51,7 @@
     display: none;
     z-index: 2;
 }
-#progresbar{
+.progresbar{
     position: fixed;
     top: 20px;
     left: 10px;
@@ -60,7 +60,16 @@
     height: 1.5px;
     display: block;
 }
-#prog{
+.progresbar1{
+    position: fixed;
+    top: 20px;
+    left: 10px;
+    background-color: black;
+    height: 1.5px;
+    display: none;
+    width: 218px;
+}
+#prog, #prog1{
     display: block;
     background-color: black;
     border: 1px solid black;
@@ -121,4 +130,12 @@
     text-align: center;
     width: 100%;
     font-size: 18px;
+}
+@media only screen and (max-width: 1100px) {
+    .progresbar1, #prog1{
+        display: block;
+    }
+    .progresbar, #prog{
+        display: none;
+    }
 }
