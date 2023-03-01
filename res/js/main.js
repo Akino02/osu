@@ -29,22 +29,22 @@ let hpbar = 390;
 let scorenum = 0;
 let progbar = 0;
 let progbar1 = 0;
-let sx1 = screen.width - screen.width * 0.2;
-let sy1 = screen.width - screen.width * 0.7;
+let sx1 = screen.width;
+let sy1 = screen.height;
 let heightres = screen.height;
 
 //randomnumber pro kruh pozice
-function randomnumber() {
-  setInterval(() => {
-    x = Math.floor(Math.random() * sx1 + 10);
-    y = Math.floor(Math.random() * sy1 + 10);
-  }, 1);
-}
 function tryrespon() {
   setInterval(() => {
     sx1 = screen.width - 120;
-    sy1 = screen.height - 120;
+    sy1 = screen.height - 300;
     game.style.height = heightres;
+  }, 1);
+}
+function randomnumber() {
+  setInterval(() => {
+    x = Math.floor(Math.random() * sx1 + 1);
+    y = Math.floor(Math.random() * sy1 + 1);
   }, 1);
 }
 //funkce když se dohraje hra tak se vypne hudba a jde to do menu
@@ -89,8 +89,8 @@ function resultwrite() {
   misclick.innerHTML = `Misclicks: ${misclicks - countclick}`;
 }
 window.onload = () => {
-  randomnumber();
   tryrespon();
+  randomnumber();
   taker.style.top = `${y}px`;
   taker.style.left = `${x}px`;
 };
