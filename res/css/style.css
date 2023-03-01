@@ -106,7 +106,7 @@
     bottom: 20px;
 }
 #result{
-    display: block;
+    display: none;
     position: absolute;
     top: 35%;
     left: 40%;
