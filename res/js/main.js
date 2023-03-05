@@ -41,19 +41,23 @@ function tryrespon() {
     game.style.height = heightres;
   }, 1);
 }
+//funkce na změnu místa kruhu
 function randomnumber() {
-  setInterval(() => {
-    x = Math.floor(Math.random() * sx1 + 1);
-    y = Math.floor(Math.random() * sy1 + 1);
-  }, 1);
+  x = Math.floor(Math.random() * sx1 + 1);
+  y = Math.floor(Math.random() * sy1 + 1);
+
+  taker.style.top = `${y}px`;
+  taker.style.left = `${x}px`;
 }
+//když se toho nedotkne dlouho tak se začne hýbat sám
+let randomsetnumbers = setInterval(randomnumber, 2000);
 //funkce když se dohraje hra tak se vypne hudba a jde to do menu
 //funkce pro životy když neklikne na nic tak je konec hry
 function musicplay_hpfunction() {
   setInterval(() => {
     if (music.currentTime >= 218 || hpbar <= 20) {
       music.pause();
-      progbar,progbar1 = 0;
+      progbar, (progbar1 = 0);
       menu.style.display = "flex";
       game.style.display = "none";
       resulttab.style.display = "block";
@@ -67,11 +71,23 @@ function musicplay_hpfunction() {
         hpball.style.left = `${hpbar}px`;
       } else if (hpbar <= 20) {
         music.pause();
-        progbar,progbar1 = 0;
+        progbar, (progbar1 = 0);
       }
     }, 20);
   }
 }
+
+//funkce na animaci score aby zmizelo a objevilo se
+function animaceon() {
+  scorehit.style.transition = ".1s";
+  scorehit.style.opacity = 0;
+}
+function animaceoff() {
+  scorehit.style.transition = ".1s";
+  scorehit.style.opacity = 1;
+}
+let another = setInterval(animaceon, 500);
+
 //funkce která ukazuje délku songu
 function musicprogbar() {
   setInterval(() => {
@@ -81,13 +97,15 @@ function musicprogbar() {
   setInterval(() => {
     progbar1 = music.currentTime;
     prog1.style.left = `${progbar1}px`;
-  }, 50)
+  }, 50);
 }
+//funkce na přepisování result tabulky na konci
 function resultwrite() {
   score.innerHTML = `Score: ${scorenum}`;
   greathit.innerHTML = `Hits: ${countclick}`;
   misclick.innerHTML = `Misclicks: ${misclicks - countclick}`;
 }
+//aby se kruh neobjevoval na stejném mistě při startu tak se už začíná měnit jeho poloho při load
 window.onload = () => {
   tryrespon();
   randomnumber();
@@ -110,7 +128,7 @@ musicgood.onclick = () => {
 };
 start.onclick = () => {
   randomnumber();
-  progbar,progbar1,scorenum,misclicks,countclick = 0;
+  progbar, progbar1, scorenum, misclicks, (countclick = 0);
   hpbar = 390;
   music.currentTime = 0;
   hpball.style.left = `${hpbar}px`;
@@ -133,9 +151,14 @@ game.onclick = () => {
   resultwrite();
 };
 taker.onclick = () => {
+  animaceoff();
+  clearInterval(another);
+  another = setInterval(animaceon, 500);
+  clearInterval(randomsetnumbers);
   scorehit.style.display = "block";
   scorehit.style.top = taker.style.top;
   scorehit.style.left = taker.style.left;
+  randomnumber();
   countclick++;
   if (hpbar < 340) {
     hpbar += 60;
@@ -144,7 +167,7 @@ taker.onclick = () => {
   } else {
     hpbar += 0;
   }
-  randomnumber();
+  randomsetnumbers = setInterval(randomnumber, 2000);
   taker.style.top = `${y}px`;
   taker.style.left = `${x}px`;
   scorenum += countclick * 100;
