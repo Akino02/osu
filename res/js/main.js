@@ -156,10 +156,10 @@ start.onclick = () => {
   progbars.style.display = "block";
 };
 osumaster.onclick = () => {
-  document.body.style.background = "url(../res/audio/osumaster.gif)"
+  document.body.style.background = "url(../res/audio/osumaster1.gif)"
   document.body.style.backgroundPosition = "center"
   document.body.style.backgroundRepeat = "no-repeat"
-  document.body.style.backgroundSize = "cover"
+  /*document.body.style.backgroundSize = "cover"*/
   randomnumber();
   progbar, progbar1, scorenum, misclicks, (countclick = 0);
   hpbar = 390;
