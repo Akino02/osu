@@ -61,7 +61,7 @@ function musicplay_hpfunction() {
     if (music.currentTime >= 218 || hpbar <= 20) {
       music.pause();
       music2.pause();
-      document.body.style.background = "url(none)"
+      document.body.style.background = "none"
       document.body.style.backgroundColor = "grey";
       progbar, (progbar1 = 0);
       menu.style.display = "flex";
@@ -79,7 +79,7 @@ function musicplay_hpfunction() {
         music.pause();
         music2.pause();
         progbar, (progbar1 = 0);
-        document.body.style.background = "url(none)"
+        document.body.style.background = "none"
         document.body.style.backgroundColor = "grey";
       }
     }, 20);
