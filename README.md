@@ -1,6 +1,9 @@
 # Wish Osu
 [Play](https://akino02.github.io/osu/)
 #
+<h2>1.5</h1>
+<p>Difficulty for Osu masters</p>
+<p>new song + background</p>
 <h2>1.4</h1>
 <p>You can play on mobile</p>
 <h2>1.3</h1>
