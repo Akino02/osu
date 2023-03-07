@@ -156,7 +156,7 @@ start.onclick = () => {
   progbars.style.display = "block";
 };
 osumaster.onclick = () => {
-  document.body.style.background = "url(../res/img/osumaster.png)"
+  document.body.style.background = "url(https://rare-gallery.com/uploads/posts/936116-Chika-Fujiwara-Kaguya-Sama-Love-is-War-anime-girls.png)"
   document.body.style.backgroundPosition = "center"
   document.body.style.backgroundRepeat = "no-repeat"
   document.body.style.backgroundSize = "cover"
