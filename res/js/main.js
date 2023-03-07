@@ -4,12 +4,14 @@ const game = document.getElementById("container_game");
 const taker = document.getElementById("taker");
 const scorehit = document.getElementById("scorehit");
 const music = document.getElementById("music");
+const music2 = document.getElementById("music2");
 const musicvol = document.getElementById("musicvol");
 const musicgood = document.getElementById("musicgood");
 const hpball = document.getElementById("hp");
 const hpbarview = document.getElementById("hpbar");
 const prog = document.getElementById("prog");
 const prog1 = document.getElementById("prog1");
+const progbars = document.getElementById("progbars");
 const resulttab = document.getElementById("result");
 const shutres = document.getElementById("shutres");
 const score = document.getElementById("score");
@@ -32,6 +34,7 @@ let progbar1 = 0;
 let sx1 = screen.width;
 let sy1 = screen.height;
 let heightres = screen.height;
+let hpplus = 60;
 
 //randomnumber pro kruh pozice
 function tryrespon() {
@@ -57,6 +60,7 @@ function musicplay_hpfunction() {
   setInterval(() => {
     if (music.currentTime >= 218 || hpbar <= 20) {
       music.pause();
+      music2.pause();
       progbar, (progbar1 = 0);
       menu.style.display = "flex";
       game.style.display = "none";
@@ -71,6 +75,7 @@ function musicplay_hpfunction() {
         hpball.style.left = `${hpbar}px`;
       } else if (hpbar <= 20) {
         music.pause();
+        music2.pause();
         progbar, (progbar1 = 0);
       }
     }, 20);
@@ -127,6 +132,7 @@ musicgood.onclick = () => {
   musicvol.value = "";
 };
 start.onclick = () => {
+  document.body.style.backgroundColor = "grey";
   randomnumber();
   progbar, progbar1, scorenum, misclicks, (countclick = 0);
   hpbar = 390;
@@ -142,7 +148,32 @@ start.onclick = () => {
   scorehit.style.display = "none";
   resultwrite();
   musicprogbar();
+  hpplus = 60;
+  progbars.style.display = "block";
 };
+osumaster.onclick = () => {
+  document.body.style.background = "url(../res/audio/osumaster1.gif)"
+  document.body.style.backgroundPosition = "center"
+  document.body.style.backgroundRepeat = "no-repeat"
+  document.body.style.backgroundSize = "cover"
+  randomnumber();
+  progbar, progbar1, scorenum, misclicks, (countclick = 0);
+  hpbar = 390;
+  music.currentTime = 0;
+  music2.currentTime = 0;
+  hpball.style.left = `${hpbar}px`;
+  hpbarview.style.display = "block";
+  music2.play();
+  musicplay_hpfunction();
+  taker.style.top = `${y}px`;
+  taker.style.left = `${x}px`;
+  menu.style.display = "none";
+  game.style.display = "block";
+  scorehit.style.display = "none";
+  resultwrite();
+  hpplus = 40;
+  progbars.style.display = "none";
+}
 game.onclick = () => {
   randomnumber();
   taker.style.top = `${y}px`;
@@ -161,7 +192,7 @@ taker.onclick = () => {
   randomnumber();
   countclick++;
   if (hpbar < 340) {
-    hpbar += 60;
+    hpbar += hpplus;
   } else if (hpbar >= 340) {
     hpbar = 390;
   } else {
@@ -177,5 +208,6 @@ shutres.onclick = () => {
   resulttab.style.display = "none";
   hpbar = 390;
   music.currentTime = 0;
+  music2.currentTime = 0;
   musicplay_hpfunction();
 };
