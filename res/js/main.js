@@ -126,11 +126,13 @@ musicgood.onclick = () => {
   z = musicvol.value;
   if (z == 10) {
     music.volume = z - 9;
+    music2.volume = z -9;
     alert("Music Volume was changed");
   } else if (musicvol.value == "") {
     alert("Nothing was changed");
   } else {
     music.volume = `0.${z}`;
+    music2.volume = `0.${z}`;
     alert("Music Volume was changed");
   }
   musicvol.value = "";
